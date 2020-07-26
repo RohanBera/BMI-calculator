@@ -8,6 +8,6 @@ App features :
 
 - Nice app
 - Easy to use
-- Dual gender setting (male & female)
-- I made this (while following along to a udemy course)
+- Dual gender settings (male & female)
+- I made this (while following along a udemy course)
 - I bought a new mouse
