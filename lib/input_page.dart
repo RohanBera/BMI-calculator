@@ -19,6 +19,8 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColor = kInactiveCardColor;
   Color femaleCardColor = kInactiveCardColor;
 
+  int height = 180;
+
   Gender selectedGender;
 
   @override
@@ -28,6 +30,7 @@ class _InputPageState extends State<InputPage> {
           title: Text('BMI CALCULATOR'),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               child: Row(
@@ -75,12 +78,49 @@ class _InputPageState extends State<InputPage> {
               child: ReusableCard(
                 color: kActiveCardColor,
                 cardChild: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       'Height',
                       style: kLabelTextStyle,
-                    )
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          height.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Text(
+                          'cm',
+                          style: kLabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    SliderTheme(
+                      data: SliderThemeData(
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0),
+                        thumbColor: Colors.red[900],
+                        overlayColor: Colors.red[900].withAlpha(69),
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: Colors.grey[700],
+                      ),
+                      child: Slider(
+                        value: height.toDouble(),
+                        min: 100,
+                        max: 300,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.floor();
+                          });
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
