@@ -1,9 +1,18 @@
 import 'package:bmi_calculator/constants.dart';
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/components//reusable_card.dart';
 import 'package:flutter/material.dart';
-import '../bottom_button.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String bmiResult;
+  final String bmiText;
+  final String bmiInterpretation;
+
+  ResultsPage(
+      {@required this.bmiResult,
+      @required this.bmiText,
+      @required this.bmiInterpretation});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,19 +41,19 @@ class ResultsPage extends StatelessWidget {
                 children: <Widget>[
                   Center(
                     child: Text(
-                      'OVERWEIGHT',
+                      bmiText.toUpperCase(),
                       style: kResultStringTextStyle,
                     ),
                   ),
                   Center(
                     child: Text(
-                      '23.0',
+                      bmiResult,
                       style: kResultValueTextStyle,
                     ),
                   ),
                   Center(
                     child: Text(
-                      'bruh ertyuiew fiwekj fjjwehf wkeifwi ekhfwik keowei fhwioe',
+                      bmiInterpretation,
                       style: kResultsSummaryTextStyle,
                       textAlign: TextAlign.center,
                     ),
