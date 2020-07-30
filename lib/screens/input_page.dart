@@ -1,9 +1,13 @@
+import 'package:bmi_calculator/results.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
+import '../icon_content.dart';
+import '../reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
+import '../constants.dart';
+import '../results.dart';
+import '../bottom_button.dart';
+import '../round_icon_button.dart';
 
 enum Gender {
   male,
@@ -105,7 +109,7 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                     SliderTheme(
-                      data: SliderThemeData(
+                      data: SliderTheme.of(context).copyWith(
                         thumbShape:
                             RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayShape:
@@ -220,35 +224,18 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: Colors.red[900],
-              margin: EdgeInsets.only(top: 12.0),
-              height: kBottomContainerHeight,
-              width: double.infinity,
+            BottomButton(
+              buttonTitle: 'Calculate',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(),
+                  ),
+                );
+              },
             ),
           ],
         ));
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final Function onPressed;
-
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      elevation: 6.0,
-      onPressed: onPressed,
-      child: Icon(icon),
-    );
   }
 }
