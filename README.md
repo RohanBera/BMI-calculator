@@ -4,6 +4,8 @@
 
 Worry no more! Here is a beautiful app to help you calculate your Body Mass Index!!
 
+Check "lib" folder for the most important code.
+
 App features :
 
 - Nice app
